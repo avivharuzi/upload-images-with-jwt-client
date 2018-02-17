@@ -5,26 +5,35 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RoutingModule } from './app.routes';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { NgProgressModule } from '@ngx-progressbar/core';
+import { NgProgressHttpModule } from '@ngx-progressbar/http';
 
 // Components
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BodyComponent } from './components/body/body.component';
 import { HomeComponent } from './components/body/home/home.component';
+import { UploadFormComponent } from './components/forms/upload-form/upload-form.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ErrorPageComponent } from './components/errors/error-page/error-page.component';
 import { ErrorFormComponent } from './components/errors/error-form/error-form.component';
 
 // Services
 import { ValidationService } from './services/validation/validation.service';
+import { UploadService } from './services/upload/upload.service';
+import { ImageService } from './services/image/image.service';
 
 // Pipes
 import { SearchPipe } from './pipes/search/search.pipe';
 import { CapitalizePipe } from './pipes/capitalize/capitalize.pipe';
-import { DefaultImageDirective } from './directives/default-image/default-image.directive';
 
 // Directives
-
+import { DefaultImageDirective } from './directives/default-image/default-image.directive';
+import { MessageComponent } from './components/message/message.component';
+import { PictureListComponent } from './components/body/picture-list/picture-list.component';
+import { PictureItemComponent } from './components/body/picture-list/picture-item/picture-item.component';
+import { PictureDetailsComponent } from './components/body/picture-details/picture-details.component';
+import { PictureEditComponent } from './components/body/picture-list/picture-edit/picture-edit.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +46,13 @@ import { DefaultImageDirective } from './directives/default-image/default-image.
     CapitalizePipe,
     SearchPipe,
     HomeComponent,
-    DefaultImageDirective
+    DefaultImageDirective,
+    UploadFormComponent,
+    MessageComponent,
+    PictureListComponent,
+    PictureItemComponent,
+    PictureDetailsComponent,
+    PictureEditComponent
   ],
   imports: [
     BrowserModule,
@@ -45,10 +60,14 @@ import { DefaultImageDirective } from './directives/default-image/default-image.
     ReactiveFormsModule,
     RoutingModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    NgProgressModule.forRoot(),
+    NgProgressHttpModule
   ],
   providers: [
-    ValidationService
+    ValidationService,
+    UploadService,
+    ImageService
   ],
   bootstrap: [AppComponent]
 })

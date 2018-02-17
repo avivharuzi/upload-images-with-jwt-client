@@ -1,0 +1,12 @@
+p {
+  white-space: normal;
+  word-break: break-all;
+}
+
+span {
+  color: #777;
+  font-size: 1.6rem;
+  margin: 0 20px 20px 0;
+  font-weight: 300;
+  position: relative;
+}

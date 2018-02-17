@@ -1,1 +1,7 @@
-<router-outlet></router-outlet>
+<ng-progress [direction]="'ltr+'" [min]="20" [max]="1" [speed]="200"
+[trickleSpeed]="300" [spinner]="true" [spinnerPosition]="'right'"
+[thick]="true" [meteor]="true" [color]="'#f44336'" [ease]="'linear'">
+</ng-progress>
+<div class="container mt-5">
+  <router-outlet></router-outlet>
+</div>

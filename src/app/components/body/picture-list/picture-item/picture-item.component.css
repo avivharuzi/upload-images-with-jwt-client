@@ -1,0 +1,5 @@
+.img-thumbnail {
+  height: auto !important;
+  min-height: 175px !important;
+  width: 100% !important;
+}

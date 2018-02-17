@@ -1,0 +1,14 @@
+<div class="row" *ngIf="message">
+  <div class="col-md-12">
+    <div class="alert alert-success" *ngIf="message.response; else error">
+      <p class="lead">
+        <i class="fa fa-check-circle-o mr-2"></i>{{ message.message }}
+      </p>
+    </div>
+    <ng-template #error>
+      <div class="alert alert-danger">
+        <p class="lead" *ngFor="let err of message.errors"><i class="fa fa-exclamation-circle mr-2"></i>{{ err }}</p>
+      </div>
+    </ng-template>
+  </div>
+</div>

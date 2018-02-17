@@ -1,0 +1,6 @@
+<div class="row">
+  <div class="col-md-3 mb-5" *ngFor="let image of images">
+    <app-picture-item [image]="image.src" routerLink="/image/{{image._id}}"></app-picture-item>
+    <app-picture-edit (deleteImageAction)="deleteImage($event)" [id]="image._id" [likes]="image.likes"></app-picture-edit>
+  </div>
+</div>
