@@ -49,4 +49,14 @@ export class Validator {
     const reg: RegExp = /^[^\d]*$/;
     return formControl => !reg.test(formControl.value) ? { 'withoutNumbersError': `You cant type numbers` } : null;
   }
+
+  static isEmail(): ValidatorFn {
+    const reg: RegExp = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+
+    return (formControl) => {
+      if (formControl.value !== null) {
+        return !reg.test(formControl.value) ? { 'isEmailError': `Email is invalid` } : null;
+      }
+    };
+  }
 }

@@ -18,7 +18,8 @@ export class HomeComponent implements OnInit {
   getImages() {
     this.imageService.getImages().subscribe((res) => {
       this.images = res;
-      console.log(this.images);
+    }, (err) => {
+      console.log(err);
     });
   }
 

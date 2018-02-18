@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/home">Gallery</a>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home">Home</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" (click)="logout()" routerLink="/login">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -17,11 +17,21 @@ import { UploadFormComponent } from './components/forms/upload-form/upload-form.
 import { FooterComponent } from './components/footer/footer.component';
 import { ErrorPageComponent } from './components/errors/error-page/error-page.component';
 import { ErrorFormComponent } from './components/errors/error-form/error-form.component';
+import { MessageComponent } from './components/message/message.component';
+import { PictureListComponent } from './components/body/picture-list/picture-list.component';
+import { PictureItemComponent } from './components/body/picture-list/picture-item/picture-item.component';
+import { PictureDetailsComponent } from './components/body/picture-details/picture-details.component';
+import { PictureEditComponent } from './components/body/picture-list/picture-edit/picture-edit.component';
+import { RegisterFormComponent } from './components/forms/register-form/register-form.component';
+import { LoginFormComponent } from './components/forms/login-form/login-form.component';
 
 // Services
 import { ValidationService } from './services/validation/validation.service';
 import { UploadService } from './services/upload/upload.service';
 import { ImageService } from './services/image/image.service';
+import { UserService } from './services/user/user.service';
+import { LoginService } from './services/login/login.service';
+import { GuardService } from './services/guard/guard.service';
 
 // Pipes
 import { SearchPipe } from './pipes/search/search.pipe';
@@ -29,11 +39,7 @@ import { CapitalizePipe } from './pipes/capitalize/capitalize.pipe';
 
 // Directives
 import { DefaultImageDirective } from './directives/default-image/default-image.directive';
-import { MessageComponent } from './components/message/message.component';
-import { PictureListComponent } from './components/body/picture-list/picture-list.component';
-import { PictureItemComponent } from './components/body/picture-list/picture-item/picture-item.component';
-import { PictureDetailsComponent } from './components/body/picture-details/picture-details.component';
-import { PictureEditComponent } from './components/body/picture-list/picture-edit/picture-edit.component';
+import { NavComponent } from './components/header/nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +58,10 @@ import { PictureEditComponent } from './components/body/picture-list/picture-edi
     PictureListComponent,
     PictureItemComponent,
     PictureDetailsComponent,
-    PictureEditComponent
+    PictureEditComponent,
+    RegisterFormComponent,
+    LoginFormComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +76,10 @@ import { PictureEditComponent } from './components/body/picture-list/picture-edi
   providers: [
     ValidationService,
     UploadService,
-    ImageService
+    ImageService,
+    UserService,
+    LoginService,
+    GuardService
   ],
   bootstrap: [AppComponent]
 })

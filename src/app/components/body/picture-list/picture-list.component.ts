@@ -17,10 +17,15 @@ export class PictureListComponent implements OnInit {
 
   deleteImage(id) {
     this.imageService.deleteImage(id).subscribe((res) => {
-      if (res) {
-        console.log(res);
-        this.images.splice(this.images.indexOf(res), 1);
+      if (res.response) {
+        for (let image of this.images) {
+          if (image._id === id) {
+            this.images.splice(this.images.indexOf(image), 1);
+          }
+        }
       }
+    }, (err) => {
+      console.log(err);
     });
   }
 }

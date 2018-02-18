@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ValidationService {
-
   constructor() { }
 
   checkValid(control): boolean {
@@ -29,4 +28,10 @@ export class ValidationService {
     }
   }
 
+  dirtyAllInputs(form) {
+    Object.keys(form.controls).forEach(field => {
+      const control = form.get(field);
+      control.markAsDirty({ onlySelf: true });
+    });
+  }
 }

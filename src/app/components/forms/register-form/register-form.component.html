@@ -1,0 +1,104 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="jumbotron text-center p-3 bg-dark text-light">
+        <h2>Register</h2>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center" *ngIf="registerMessage">
+    <div class="col-lg-6">
+      <app-message [message]="registerMessage"></app-message>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <form [formGroup]="registerForm" (ngSubmit)="setRegisterForm()" autocomplete="off" novalidate>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fa fa-user"></i>
+              </span>
+            </div>
+
+            <input type="text" class="form-control" [ngClass]="validationService.statusClass(registerForm.controls['userName'])" formControlName="userName"
+              placeholder="Username" autofocus>
+            <app-error-form class="invalid-feedback" [control]="registerForm.controls['userName']"></app-error-form>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fa fa-user"></i>
+              </span>
+            </div>
+            <input type="text" class="form-control" [ngClass]="validationService.statusClass(registerForm.controls['firstName'])" formControlName="firstName"
+              placeholder="First Name">
+            <app-error-form class="invalid-feedback" [control]="registerForm.controls['firstName']"></app-error-form>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fa fa-user"></i>
+              </span>
+            </div>
+
+            <input type="text" [ngClass]="validationService.statusClass(registerForm.controls['lastName'])" formControlName="lastName"
+              class="form-control" placeholder="Last Name">
+            <app-error-form class="invalid-feedback" [control]="registerForm.controls['lastName']"></app-error-form>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fa fa-envelope"></i>
+              </span>
+            </div>
+
+            <input type="email" [ngClass]="validationService.statusClass(registerForm.controls['email'])" formControlName="email" class="form-control"
+              placeholder="Email">
+            <app-error-form class="invalid-feedback" [control]="registerForm.controls['email']"></app-error-form>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fa fa-key"></i>
+              </span>
+            </div>
+
+            <input type="password" [ngClass]="validationService.statusClass(registerForm.controls['password'])" formControlName="password"
+              class="form-control" placeholder="Password">
+            <app-error-form class="invalid-feedback" [control]="registerForm.controls['password']"></app-error-form>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fa fa-key"></i>
+              </span>
+            </div>
+
+            <input type="password" [ngClass]="validationService.statusClass(registerForm.controls['confirmPassword'])" formControlName="confirmPassword"
+              class="form-control" placeholder="Confirm Password">
+            <app-error-form class="invalid-feedback" [control]="registerForm.controls['confirmPassword']"></app-error-form>
+          </div>
+        </div>
+        <div class="form-group">
+          <small class="text-muted">Already have an account?
+            <a routerLink="/login">Log In</a>
+          </small>
+        </div>
+        <input type="submit" value="Submit" class="btn btn-success btn-block">
+      </form>
+
+    </div>
+  </div>
+</div>
