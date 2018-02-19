@@ -45,17 +45,12 @@ export class RegisterFormComponent implements OnInit {
       Validator.required('Password')
     ]);
 
-    const confirmPassword: FormControl = new FormControl('', [
-      Validator.required('Confirm Password')
-    ]);
-
     this.registerForm = new FormGroup({
       userName,
       firstName,
       lastName,
       email,
-      password,
-      confirmPassword,
+      password
     });
   }
 
