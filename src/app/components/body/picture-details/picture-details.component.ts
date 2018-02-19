@@ -27,8 +27,12 @@ export class PictureDetailsComponent implements OnInit {
   checkImage(): void {
     this.activatedRoute.params.subscribe(params => this.imageName = params.image);
     this.imageService.getImageDetails(this.imageName).subscribe((res: any) => {
-      this.imageDetails = res.clarifai;
-      this.image = res.image;
+      if (res.clarifai) {
+        this.imageDetails = res.clarifai;
+        this.image = res.image;
+      } else {
+        this.router.navigate(['404']);
+      }
     }, err => {
       this.router.navigate(['404']);
     });
