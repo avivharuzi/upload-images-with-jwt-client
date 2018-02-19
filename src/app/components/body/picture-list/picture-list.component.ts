@@ -16,7 +16,7 @@ export class PictureListComponent implements OnInit {
   }
 
   deleteImage(id) {
-    this.imageService.deleteImage(id).subscribe((res) => {
+    this.imageService.deleteImage(id).subscribe((res: any) => {
       if (res.response) {
         for (let image of this.images) {
           if (image._id === id) {
@@ -24,7 +24,7 @@ export class PictureListComponent implements OnInit {
           }
         }
       }
-    }, (err) => {
+    }, err => {
       console.log(err);
     });
   }

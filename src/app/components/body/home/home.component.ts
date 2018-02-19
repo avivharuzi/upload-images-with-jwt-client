@@ -15,15 +15,15 @@ export class HomeComponent implements OnInit {
     this.getImages();
   }
 
-  getImages() {
-    this.imageService.getImages().subscribe((res) => {
+  getImages(): void {
+    this.imageService.getImages().subscribe((res: any) => {
       this.images = res;
-    }, (err) => {
+    }, err => {
       console.log(err);
     });
   }
 
-  addNewImages(newImages: any) {
+  addNewImages(newImages: any): void {
     this.images = this.images.concat(newImages);
   }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validator } from '../../../models/validator.model';
 import { ValidationService } from '../../../services/validation/validation.service'
-import { LoginService } from '../../../services/login/login.service';
+import { AuthService } from '../../../services/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,7 +16,7 @@ export class LoginFormComponent implements OnInit {
 
   constructor(
     public validationService: ValidationService,
-    private loginService: LoginService,
+    private authService: AuthService,
     private router: Router
   ) { }
 
@@ -53,11 +53,11 @@ export class LoginFormComponent implements OnInit {
   }
 
   loginUser(user) {
-    this.loginService.login(user).subscribe((res: any) => {
+    this.authService.login(user).subscribe((res: any) => {
       if (res) {
         this.router.navigate(['/']);
       }
-    }, (err) => {
+    }, err => {
       this.loginMessage = err.error;
     });
   }

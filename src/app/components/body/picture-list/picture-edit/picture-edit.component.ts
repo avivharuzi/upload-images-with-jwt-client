@@ -24,7 +24,7 @@ export class PictureEditComponent implements OnInit {
   }
 
   increaseLike() {
-    this.imageService.increaseLikeToImage(this.id).subscribe((res) => {
+    this.imageService.increaseLikeToImage(this.id).subscribe((res: any) => {
       if (res) {
         this.likes++;
       }

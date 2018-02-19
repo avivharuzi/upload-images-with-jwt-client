@@ -30,7 +30,7 @@ import { ValidationService } from './services/validation/validation.service';
 import { UploadService } from './services/upload/upload.service';
 import { ImageService } from './services/image/image.service';
 import { UserService } from './services/user/user.service';
-import { LoginService } from './services/login/login.service';
+import { AuthService } from './services/auth/auth.service';
 import { GuardService } from './services/guard/guard.service';
 
 // Pipes
@@ -78,7 +78,7 @@ import { NavComponent } from './components/header/nav/nav.component';
     UploadService,
     ImageService,
     UserService,
-    LoginService,
+    AuthService,
     GuardService
   ],
   bootstrap: [AppComponent]

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { IMAGES_URL } from '../../constants/urls';
-import { LoginService } from './../login/login.service';
+import { AuthService } from './../auth/auth.service';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -15,9 +15,9 @@ export class UploadService {
 
   constructor(
     private http: HttpClient,
-    private loginService: LoginService
+    private authService: AuthService
   ) {
-    this.headers = new HttpHeaders(`authorization:${this.loginService.token}`);
+    this.headers = new HttpHeaders(`authorization:${this.authService.token}`);
   }
 
   uploadImages(images: File[]): Observable<any> {
@@ -27,9 +27,9 @@ export class UploadService {
       fd.append('images', image);
     }
 
-    return this.http.post(IMAGES_URL, fd, { headers: this.headers }).map((res) => {
+    return this.http.post(IMAGES_URL, fd, { headers: this.headers }).map((res: any) => {
       return res;
     })
-    .catch(error => Observable.throw(error));
+    .catch(err => Observable.throw(err));
   }
 }

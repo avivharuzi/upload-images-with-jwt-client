@@ -1,4 +1,4 @@
-import { ValidatorFn, FormControl } from '@angular/forms';
+import { ValidatorFn, FormControl, AbstractControl } from '@angular/forms';
 
 export class Validator {
   static required(name: string): ValidatorFn {

@@ -7,3 +7,4 @@ export const IMAGES_PATH = `${BASE_URL}/assets/images`;
 
 export const REGISTER_URL = `${BASE_URL}/register`;
 export const LOGIN_URL = `${BASE_URL}/login`;
+export const CHECK_TOKEN_URL = `${BASE_URL}/check`;

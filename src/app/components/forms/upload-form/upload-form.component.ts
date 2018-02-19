@@ -22,7 +22,7 @@ export class UploadFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  changeImages(event) {
+  changeImages(event): void {
     let fileList: FileList = event.target.files;
     this.images = new Array<File>();
 
@@ -31,12 +31,18 @@ export class UploadFormComponent implements OnInit {
     }
   }
 
-  uploadImages() {
-    this.uploadService.uploadImages(this.images).subscribe(res => {
-      this.msg = res;
-      this.newImages.emit(res.data);
-    }, error => {
-      this.msg = error.error;
-    });
+  uploadImages(): void {
+    if (this.images !== undefined && this.images.length) {
+      this.uploadService.uploadImages(this.images).subscribe((res: any) => {
+        this.msg = res;
+        this.newImages.emit(res.data);
+      }, err => {
+        this.msg = err.error;
+      });
+    } else {
+      this.msg = {
+        errors: ['You need to choose at least one image']
+      }
+    }
   }
 }

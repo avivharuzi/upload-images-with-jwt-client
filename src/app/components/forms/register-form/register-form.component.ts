@@ -1,6 +1,6 @@
 import { User } from './../../../models/user.model';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, AbstractControl } from '@angular/forms';
 import { Validator } from '../../../models/validator.model';
 import { ValidationService } from '../../../services/validation/validation.service';
 import { UserService } from '../../../services/user/user.service';
@@ -79,8 +79,10 @@ export class RegisterFormComponent implements OnInit {
     this.userService.setUser(user).subscribe((res: any) => {
       this.registerForm.reset();
       this.registerMessage = res;
-    }, (err) => {
-      this.registerMessage = err;
+    }, err => {
+      if (err.error.errors.length) {
+        this.registerMessage = err.error;
+      }
     });
   }
 }
