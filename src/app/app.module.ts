@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RoutingModule } from './app.routes';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressHttpModule } from '@ngx-progressbar/http';
 
@@ -24,6 +24,7 @@ import { PictureDetailsComponent } from './components/body/picture-details/pictu
 import { PictureEditComponent } from './components/body/picture-list/picture-edit/picture-edit.component';
 import { RegisterFormComponent } from './components/forms/register-form/register-form.component';
 import { LoginFormComponent } from './components/forms/login-form/login-form.component';
+import { NavComponent } from './components/header/nav/nav.component';
 
 // Services
 import { ValidationService } from './services/validation/validation.service';
@@ -32,6 +33,7 @@ import { ImageService } from './services/image/image.service';
 import { UserService } from './services/user/user.service';
 import { AuthService } from './services/auth/auth.service';
 import { GuardService } from './services/guard/guard.service';
+import { InterceptorService } from './services/interceptor/interceptor.service';
 
 // Pipes
 import { SearchPipe } from './pipes/search/search.pipe';
@@ -39,7 +41,6 @@ import { CapitalizePipe } from './pipes/capitalize/capitalize.pipe';
 
 // Directives
 import { DefaultImageDirective } from './directives/default-image/default-image.directive';
-import { NavComponent } from './components/header/nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,12 @@ import { NavComponent } from './components/header/nav/nav.component';
     ImageService,
     UserService,
     AuthService,
-    GuardService
+    GuardService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

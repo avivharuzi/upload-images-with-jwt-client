@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Injectable()
 export class ValidationService {
   constructor() { }
 
-  checkValid(control): boolean {
+  checkValid(control: FormControl): boolean {
     if (!(control.errors) && !(control.pristine)) {
       return true;
     } else {
@@ -12,7 +13,7 @@ export class ValidationService {
     }
   }
 
-  checkInvalid(control): boolean {
+  checkInvalid(control: FormControl): boolean {
     if ((control.errors) && !(control.pristine)) {
       return true;
     } else {
@@ -20,7 +21,7 @@ export class ValidationService {
     }
   }
 
-  statusClass(control) {
+  statusClass(control: FormControl): string {
     if (!(control.errors) && !(control.pristine)) {
       return 'is-valid';
     } else if ((control.errors) && !(control.pristine)) {
@@ -28,7 +29,7 @@ export class ValidationService {
     }
   }
 
-  dirtyAllInputs(form) {
+  dirtyAllInputs(form: FormGroup): void {
     Object.keys(form.controls).forEach(field => {
       const control = form.get(field);
       control.markAsDirty({ onlySelf: true });
