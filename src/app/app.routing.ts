@@ -20,7 +20,7 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterFormComponent, data: { title: 'Register' } },
   { path: '404', component: ErrorPageComponent, data: { title: 'Error Page' } },
   { path:  '', redirectTo: 'home', pathMatch: 'full' },
-  { path: '**', component: ErrorPageComponent },
+  { path: '**', component: ErrorPageComponent }
 ];
 
 const appRouter: ModuleWithProviders = RouterModule.forRoot(appRoutes);
